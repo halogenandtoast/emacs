@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -f "$HOME/.emacs" ]
+if [ -f "$HOME/.emacs" ] || [ -L "$HOME/.emacs" ]
 then
   read -r -p "$HOME/.emacs exists. Delete? [y/N] " response
   if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
@@ -11,7 +11,7 @@ then
   fi
 fi
 
-if [ -d "$HOME/.emacs.d" ]
+if [ -d "$HOME/.emacs.d" ] || [ -L "$HOME/.emacs.d" ]
 then
   read -r -p "$HOME/.emacs.d exists. Delete? [y/N] " response
   if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
@@ -22,9 +22,10 @@ then
   fi
 fi
 
+rm -rf emacs.d
 mkdir emacs.d
 git clone https://github.com/emacs-evil/evil `pwd`/emacs.d/evil
 
-ln -s `pwd`/emacs $HOME/.emacs
+ln -s `pwd`/emacs.el $HOME/.emacs
 ln -s `pwd`/emacs.d $HOME/.emacs.d
 
