@@ -5,7 +5,7 @@
 
 ;; setup package
 (require 'package)
-(setq package-list '(helm-projectile vue-mode mmm-mode company robe enh-ruby-mode rspec-mode flycheck helm magit seti-theme projectile))
+(setq package-list '(helm-projectile vue-mode mmm-mode company robe enh-ruby-mode rspec-mode flycheck helm magit seti-theme projectile yasnippet))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("MELPA Stable" . "http://stable.melpa.org/packages/") t)
 
@@ -84,3 +84,18 @@
 ;; Helm projectile
 (require 'helm-projectile)
 (helm-projectile-on)
+
+(define-key global-map [?¥] [?\\])  ;; ¥の代わりにバックスラッシュを入力する
+
+;; Indentation
+(setq indent-tabs-mode nil)
+(setq c-basic-offset 2)
+;; web development
+(setq coffee-tab-width 2) ; coffeescript
+(setq javascript-indent-level 2) ; javascript-mode
+(setq js-indent-level 2) ; js-mode
+(setq js2-basic-offset 2) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+(setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
+(setq web-mode-css-indent-offset 2) ; web-mode, css in html file
+(setq web-mode-code-indent-offset 2) ; web-mode, js code in html file
+(setq css-indent-offset 2) ; css-mode
